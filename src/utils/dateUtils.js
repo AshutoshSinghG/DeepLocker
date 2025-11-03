@@ -4,8 +4,6 @@
 
 /**
  * Parse date string to Date object
- * @param {string} dateStr - Date string in YYYY-MM-DD format
- * @returns {Date} Parsed date object
  */
 const parseDate = (dateStr) => {
   if (!dateStr) return null;
@@ -20,8 +18,6 @@ const parseDate = (dateStr) => {
 
 /**
  * Format date to YYYY-MM-DD string
- * @param {Date} date - Date object
- * @returns {string} Formatted date string
  */
 const formatDate = (date) => {
   if (!(date instanceof Date) || isNaN(date.getTime())) {
@@ -37,9 +33,6 @@ const formatDate = (date) => {
 
 /**
  * Get date range between start and end dates
- * @param {string} start - Start date in YYYY-MM-DD format
- * @param {string} end - End date in YYYY-MM-DD format
- * @returns {Array<string>} Array of date strings
  */
 const getDateRange = (start, end) => {
   const dates = [];
@@ -62,10 +55,6 @@ const getDateRange = (start, end) => {
 
 /**
  * Validate date range (max 90 days)
- * @param {string} start - Start date in YYYY-MM-DD format
- * @param {string} end - End date in YYYY-MM-DD format
- * @param {number} maxDays - Maximum allowed days (default: 90)
- * @returns {boolean} True if valid
  */
 const validateDateRange = (start, end, maxDays = 90) => {
   const startDate = parseDate(start);
@@ -79,7 +68,6 @@ const validateDateRange = (start, end, maxDays = 90) => {
 
 /**
  * Get current date in YYYY-MM-DD format
- * @returns {string} Current date string
  */
 const getCurrentDate = () => {
   return formatDate(new Date());

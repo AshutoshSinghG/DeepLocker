@@ -19,16 +19,12 @@ class HyperLiquidService {
 
   /**
    * Fetch wallet PnL data for a date range
-   * @param {string} wallet - Wallet address
-   * @param {string} startDate - Start date in YYYY-MM-DD format
-   * @param {string} endDate - End date in YYYY-MM-DD format
-   * @returns {Promise<Object>} PnL data
    */
   async getWalletPnL(wallet, startDate, endDate) {
     try {
       // Since HyperLiquid API structure may vary, we'll use mock data
       // In production, replace this with actual API calls
-      console.log(`📊 Fetching PnL for wallet: ${wallet.substring(0, 10)}...`);
+      console.log(` Fetching PnL for wallet: ${wallet.substring(0, 10)}...`);
       
       const dailyData = this.generateMockPnLData(wallet, startDate, endDate);
       
@@ -54,11 +50,6 @@ class HyperLiquidService {
 
   /**
    * Generate mock PnL data for demonstration
-   * In production, this would fetch real data from HyperLiquid API
-   * @param {string} wallet - Wallet address
-   * @param {string} startDate - Start date
-   * @param {string} endDate - End date
-   * @returns {Array<Object>} Daily PnL data
    */
   generateMockPnLData(wallet, startDate, endDate) {
     const dates = getDateRange(startDate, endDate);
@@ -98,8 +89,6 @@ class HyperLiquidService {
 
   /**
    * Calculate summary statistics from daily PnL data
-   * @param {Array<Object>} dailyData - Daily PnL data
-   * @returns {Object} Summary statistics
    */
   calculateSummary(dailyData) {
     const summary = dailyData.reduce(
@@ -137,8 +126,6 @@ class HyperLiquidService {
 
   /**
    * Hash string to number for seed generation
-   * @param {string} str - Input string
-   * @returns {number} Hash value
    */
   hashString(str) {
     let hash = 0;
@@ -152,8 +139,6 @@ class HyperLiquidService {
 
   /**
    * Seeded random number generator for consistent pseudo-random data
-   * @param {number} seed - Seed value
-   * @returns {Function} Random number generator function
    */
   seededRandom(seed) {
     let value = seed;
@@ -165,10 +150,6 @@ class HyperLiquidService {
 
   /**
    * Fetch actual trades from HyperLiquid (if available)
-   * @param {string} wallet - Wallet address
-   * @param {string} startDate - Start date
-   * @param {string} endDate - End date
-   * @returns {Promise<Array>} Trade data
    */
   async fetchTrades(wallet, startDate, endDate) {
     try {
@@ -188,10 +169,6 @@ class HyperLiquidService {
 
   /**
    * Fetch funding payments
-   * @param {string} wallet - Wallet address
-   * @param {string} startDate - Start date
-   * @param {string} endDate - End date
-   * @returns {Promise<Array>} Funding data
    */
   async fetchFunding(wallet, startDate, endDate) {
     try {

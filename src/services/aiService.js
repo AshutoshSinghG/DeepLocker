@@ -14,12 +14,10 @@ class AIService {
 
   /**
    * Generate token insight using AI model
-   * @param {Object} tokenData - Token market data
-   * @returns {Promise<Object>} AI insight with reasoning and sentiment
    */
   async generateInsight(tokenData) {
     try {
-      console.log(`🤖 Generating insight using ${this.provider}`);
+      console.log(`Generating insight using ${this.provider}`);
       
       let result;
       
@@ -44,8 +42,6 @@ class AIService {
 
   /**
    * Generate insight using HuggingFace API
-   * @param {Object} tokenData - Token market data
-   * @returns {Promise<Object>} AI insight
    */
   async generateHuggingFaceInsight(tokenData) {
     if (!this.huggingfaceKey) {
@@ -79,8 +75,6 @@ class AIService {
 
   /**
    * Generate insight using OpenAI API
-   * @param {Object} tokenData - Token market data
-   * @returns {Promise<Object>} AI insight
    */
   async generateOpenAIInsight(tokenData) {
     if (!this.openaiKey) {
@@ -122,8 +116,6 @@ class AIService {
 
   /**
    * Build AI prompt from token data
-   * @param {Object} tokenData - Token market data
-   * @returns {string} Formatted prompt
    */
   buildPrompt(tokenData) {
     const { market_data, name, symbol } = tokenData;
@@ -146,9 +138,6 @@ Respond ONLY with valid JSON, no additional text.`;
 
   /**
    * Parse AI response and extract insights
-   * @param {string} response - Raw AI response
-   * @param {Object} tokenData - Token data for fallback
-   * @returns {Object} Structured insight
    */
   parseAIResponse(response, tokenData) {
     try {
@@ -176,8 +165,6 @@ Respond ONLY with valid JSON, no additional text.`;
 
   /**
    * Get fallback insight when AI service fails
-   * @param {Object} tokenData - Token data
-   * @returns {Object} Fallback insight
    */
   getFallbackInsight(tokenData) {
     const { market_data } = tokenData;

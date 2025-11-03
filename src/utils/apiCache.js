@@ -11,9 +11,6 @@ class Cache {
 
   /**
    * Set a value in cache with optional TTL
-   * @param {string} key - Cache key
-   * @param {any} value - Value to cache
-   * @param {number} ttl - Time to live in milliseconds
    */
   set(key, value, ttl = this.defaultTTL) {
     const expiry = Date.now() + ttl;
@@ -22,8 +19,6 @@ class Cache {
 
   /**
    * Get a value from cache
-   * @param {string} key - Cache key
-   * @returns {any|null} Cached value or null
    */
   get(key) {
     const item = this.cache.get(key);
@@ -43,7 +38,6 @@ class Cache {
 
   /**
    * Delete a value from cache
-   * @param {string} key - Cache key
    */
   delete(key) {
     this.cache.delete(key);

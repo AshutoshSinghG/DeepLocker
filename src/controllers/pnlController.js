@@ -8,7 +8,6 @@ const {
 
 /**
  * Get wallet PnL data for a date range
- * @route GET /api/hyperliquid/:wallet/pnl
  */
 const getWalletPnL = asyncHandler(async (req, res) => {
   const { wallet } = req.params;
@@ -61,7 +60,7 @@ const getWalletPnL = asyncHandler(async (req, res) => {
   const formattedEnd = formatDateStr(endDate);
 
   try {
-    console.log(`📊 Fetching PnL for wallet: ${wallet.substring(0, 15)}...`);
+    console.log(`Fetching PnL for wallet: ${wallet.substring(0, 15)}...`);
     
     const pnlData = await hyperliquidService.getWalletPnL(wallet, formattedStart, formattedEnd);
     
@@ -76,7 +75,7 @@ const getWalletPnL = asyncHandler(async (req, res) => {
       },
     };
 
-    console.log(`✅ PnL data fetched successfully`);
+    console.log(`PnL data fetched successfully`);
     
     res.status(200).json(response);
   } catch (error) {
@@ -87,7 +86,6 @@ const getWalletPnL = asyncHandler(async (req, res) => {
 
 /**
  * Get wallet summary
- * @route GET /api/hyperliquid/:wallet/summary
  */
 const getWalletSummary = asyncHandler(async (req, res) => {
   const { wallet } = req.params;

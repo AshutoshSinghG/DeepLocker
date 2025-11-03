@@ -4,7 +4,6 @@ const { AppError, asyncHandler } = require('../utils/errorHandler');
 
 /**
  * Generate token insight with AI analysis
- * @route POST /api/token/:id/insight
  */
 const generateTokenInsight = asyncHandler(async (req, res) => {
   const { id: tokenId } = req.params;
@@ -24,7 +23,7 @@ const generateTokenInsight = asyncHandler(async (req, res) => {
   }
 
   try {
-    console.log(`🔍 Generating insight for token: ${tokenId}`);
+    console.log(` Generating insight for token: ${tokenId}`);
     
     // Fetch token data from CoinGecko
     const tokenData = await coinGeckoService.getTokenData(tokenId, vs_currency);
@@ -85,7 +84,7 @@ const generateTokenInsight = asyncHandler(async (req, res) => {
       };
     }
 
-    console.log(`✅ Insight generated successfully for: ${tokenId}`);
+    console.log(`Insight generated successfully for: ${tokenId}`);
     
     res.status(200).json(response);
   } catch (error) {

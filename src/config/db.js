@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 /**
  * MongoDB connection configuration
- * Handles connection to MongoDB with error handling and reconnection logic
  */
 const connectDB = async () => {
   try {
@@ -16,20 +15,20 @@ const connectDB = async () => {
 
     const conn = await mongoose.connect(mongoURI, options);
 
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+    console.log(` MongoDB Connected: ${conn.connection.host}`);
     
     // Handle connection events
     mongoose.connection.on('error', (err) => {
-      console.error('❌ MongoDB connection error:', err);
+      console.error(' MongoDB connection error:', err);
     });
 
     mongoose.connection.on('disconnected', () => {
-      console.log('⚠️  MongoDB disconnected. Attempting to reconnect...');
+      console.log('  MongoDB disconnected. Attempting to reconnect...');
     });
 
     return conn;
   } catch (error) {
-    console.error('❌ Error connecting to MongoDB:', error.message);
+    console.error(' Error connecting to MongoDB:', error.message);
     // In production, you might want to exit the process
     // process.exit(1);
     return null;

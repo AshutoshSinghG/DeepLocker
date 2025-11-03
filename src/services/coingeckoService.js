@@ -19,9 +19,6 @@ class CoinGeckoService {
 
   /**
    * Fetch token metadata and market data
-   * @param {string} tokenId - CoinGecko token ID (e.g., 'bitcoin', 'ethereum')
-   * @param {string} vsCurrency - Base currency (default: 'usd')
-   * @returns {Promise<Object>} Token data
    */
   async getTokenData(tokenId, vsCurrency = 'usd') {
     try {
@@ -29,11 +26,11 @@ class CoinGeckoService {
       const cached = cache.get(cacheKey);
       
       if (cached) {
-        console.log(`📦 Cache hit for token: ${tokenId}`);
+        console.log(`Cache hit for token: ${tokenId}`);
         return cached;
       }
 
-      console.log(`🌐 Fetching token data for: ${tokenId}`);
+      console.log(`Fetching token data for: ${tokenId}`);
       
       const response = await this.client.get(`/coins/${tokenId}`, {
         params: {
@@ -62,10 +59,6 @@ class CoinGeckoService {
 
   /**
    * Fetch market chart data for historical price data
-   * @param {string} tokenId - CoinGecko token ID
-   * @param {number} days - Number of days of history
-   * @param {string} vsCurrency - Base currency (default: 'usd')
-   * @returns {Promise<Object>} Market chart data
    */
   async getMarketChart(tokenId, days = 30, vsCurrency = 'usd') {
     try {
@@ -98,9 +91,6 @@ class CoinGeckoService {
 
   /**
    * Transform CoinGecko API response to standardized format
-   * @param {Object} data - Raw CoinGecko data
-   * @param {string} vsCurrency - Base currency
-   * @returns {Object} Transformed data
    */
   transformTokenData(data, vsCurrency = 'usd') {
     const marketData = data.market_data;
@@ -137,9 +127,6 @@ class CoinGeckoService {
 
   /**
    * Get token data with market chart
-   * @param {string} tokenId - CoinGecko token ID
-   * @param {Object} params - Query parameters
-   * @returns {Promise<Object>} Combined token data
    */
   async getTokenWithHistory(tokenId, params = {}) {
     const { vs_currency = 'usd', history_days = 30 } = params;
