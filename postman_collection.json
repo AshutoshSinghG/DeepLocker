@@ -1,0 +1,169 @@
+{
+  "info": {
+    "name": "Token Insight & Analytics API",
+    "description": "Collection for testing Token Insight and HyperLiquid PnL APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Token Insight - Bitcoin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vs_currency\": \"usd\",\n  \"history_days\": 30\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/token/bitcoin/insight",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "token", "bitcoin", "insight"]
+        }
+      }
+    },
+    {
+      "name": "Token Insight - Ethereum",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vs_currency\": \"usd\",\n  \"history_days\": 7\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/token/ethereum/insight",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "token", "ethereum", "insight"]
+        }
+      }
+    },
+    {
+      "name": "Token Insight - Solana",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vs_currency\": \"usd\",\n  \"history_days\": 14\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/token/solana/insight",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "token", "solana", "insight"]
+        }
+      }
+    },
+    {
+      "name": "Wallet PnL - 7 Days",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/hyperliquid/0x1234567890abcdef1234567890abcdef12345678/pnl?start=2025-01-15&end=2025-01-22",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "hyperliquid", "0x1234567890abcdef1234567890abcdef12345678", "pnl"],
+          "query": [
+            {
+              "key": "start",
+              "value": "2025-01-15"
+            },
+            {
+              "key": "end",
+              "value": "2025-01-22"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Wallet PnL - 30 Days",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/hyperliquid/0xabcdefabcdefabcdefabcdefabcdefabcdefabcd/pnl?start=2024-12-01&end=2024-12-31",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "hyperliquid", "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd", "pnl"],
+          "query": [
+            {
+              "key": "start",
+              "value": "2024-12-01"
+            },
+            {
+              "key": "end",
+              "value": "2024-12-31"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Wallet Summary",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/hyperliquid/0x1234567890abcdef1234567890abcdef12345678/summary",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "hyperliquid", "0x1234567890abcdef1234567890abcdef12345678", "summary"]
+        }
+      }
+    },
+    {
+      "name": "Root Endpoint",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": [""]
+        }
+      }
+    }
+  ]
+}
+

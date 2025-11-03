@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: token-insight-api
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - AI_PROVIDER=${AI_PROVIDER:-HUGGINGFACE}
+      - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
+      - HUGGINGFACE_MODEL=${HUGGINGFACE_MODEL:-tiiuae/falcon-7b-instruct}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-3.5-turbo}
+      - COINGECKO_API_KEY=${COINGECKO_API_KEY}
+      - HYPERLIQUID_API_URL=${HYPERLIQUID_API_URL:-https://api.hyperliquid.xyz}
+      - MONGODB_URI=mongodb://mongo:27017/token-insight
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    networks:
+      - token-insight-network
+
+  mongo:
+    image: mongo:7-alpine
+    container_name: token-insight-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+    networks:
+      - token-insight-network
+    environment:
+      - MONGO_INITDB_DATABASE=token-insight
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  token-insight-network:
+    driver: bridge
+
